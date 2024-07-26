@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('back.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header, footer {
+            background-color: #00008B; /* Blue shade */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        h1 {
+            color: #fff; /* White shade */
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        .container {
+            flex: 1;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+        }
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .courses, .articles {
+            flex: 1;
+            min-width: 300px;
+        }
+        .section-heading {
+            background-color: #00008B; /* Blue shade */
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .course, .article {
+            background-color: #fff; /* White */
+            border: 2px solid #00008B; /* Blue shade */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .course img, .article img {
+            width: 100%;
+            height: 150px; /* Uniform height for images */
+            object-fit: cover; /* Ensure image covers the container */
+        }
+        .course a, .article a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #00008B; /* Blue shade */
+            font-weight: bold;
+            background-color: #fff; /* White */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .course a:hover, .article a:hover {
+            background-color: #00008B; /* Blue shade */
+            color: #fff;
+        }
+        .label {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #00008B; /* Blue shade */
+            color: #fff;
+            padding: 2px 5px;
+            font-size: 0.8em;
+            border-radius: 3px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #fff; /* White */
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #00008B; /* Blue shade */
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .close {
+            color: #00008B; /* Blue shade */
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #fff; /* White shade */
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Learning Studio</h1>
+    </header>
+    <div class="container">
+        <div class="columns">
+            <div class="courses">
+                <div class="section-heading">Courses</div>
+                <div class="course">
+                    <img src="f.jfif" alt="Web Development Front End">
+                    <a href="https://youtu.be/HcOc7P5BMi4?si=CaMSCiiS6Ma9Mzk7" target="_blank">Web Development: Front End</a>
+                    <div class="label">JG</div>
+                </div>
+                <div class="course">
+                    <img src="b.jfif" alt="Web Development Back End">
+                    <a href="https://www.youtube.com/watch?v=T55Kb8rrH1g&list=PLbtI3_MArDOkXRLxdMt1NOMtCS-84ibHH" target="_blank">Web Development: Back End</a>
+                    <div class="label">JG</div>
+                </div>
+                <div class="course">
+                    <img src="p.jfif" alt="Python">
+                    <a href="https://youtu.be/_uQrJ0TkZlc?si=e2GJFgQlX-JS_Egz" target="_blank">Python</a>
+                    <div class="label">JG</div>
+                </div>
+                <div class="course">
+                    <img src="c+.jfif" alt="C++">
+                    <a href="https://www.youtube.com/watch?v=oOmbSpOzvYg&list=PLdo5W4Nhv31YU5Wx1dopka58teWP9aCee" target="_blank">C++</a>
+                    <div class="label">JG</div>
+                </div>
+                <div class="course">
+                    <img src="s.jfif" alt="SQL">
+                    <a href="https://youtu.be/HXV3zeQKqGY?si=RWwYAfLlLZ68Lbp_" target="_blank">SQL</a>
+                    <div class="label">JG</div>
+                </div>
+                <div class="course">
+                    <img src="d.jfif" alt="Data Science">
+                    <a href="https://youtu.be/ua-CiDNNj30?si=uUPT0jG7PSRY2rhP" target="_blank">Data Science</a>
+                    <div class="label">JG</div>
+                </div>
+            </div>
+            <div class="articles">
+                <div class="section-heading">Articles</div>
+                <div class="article">
+                    <img src="front.jpg" alt="Article 1">
+                    <a href="https://thenewstack.io/frontend-development/?utm_referrer=https%3A%2F%2Fwww.google.com%2F" target="_blank">Understanding Front-End Development</a>
+                </div>
+                <div class="article">
+                    <img src="backend.jfif" alt="Article 2">
+                    <a href="https://thenewstack.io/backend-development-efficiency-the-critical-role-of-caching/" target="_blank">Back-End Development Basics</a>
+                </div>
+                <div class="article">
+                    <img src="py.png" alt="Article 3">
+                    <a href="https://thenewstack.io/an-introduction-to-python-for-non-programmers/" target="_blank">Introduction to Python</a>
+                </div>
+                <div class="article">
+                    <img src="c.png" alt="Article 4">
+                    <a href="https://learn.saylor.org/course/view.php?id=65&gad_source=1&gclid=CjwKCAjwko21BhAPEiwAwfaQCEMfMTQCWIJefOEB6yRH59dOYp7LGk4ZcrpuxAOIRVzaacheBv-t9RoCpiwQAvD_BwE" target="_blank">Learning C++</a>
+                </div>
+                <div class="article">
+                    <img src="sql.jfif" alt="Article 5">
+                    <a href="https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-sql/" target="_blank">SQL for Beginners</a>
+                </div>
+                <div class="article">
+                    <img src="data.jfif" alt="Article 6">
+                    <a href="https://thenewstack.io/how-to-build-a-data-science-enablement-team/" target="_blank">Data Science Explained</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Learning Studio. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal for welcome message -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Welcome to Learning Studio!</h2>
+            <p>We're excited to help you start your learning journey. Explore our courses and articles to get started.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("welcomeModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the page loads, open the modal
+        window.onload = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
